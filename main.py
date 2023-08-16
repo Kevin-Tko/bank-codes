@@ -13,16 +13,15 @@ def get_html_bic_input():
   if request.method == 'POST':
     try:
       user_input_bic = (request.form['bic']).upper()
-      return render_template('home.html',bank_name=bank_name(user_input_bic),bank_bic=bank_bic(user_input_bic))
+      return render_template('home.html',bank_name=bank_name(user_input_bic), bank_bic=bank_bic(user_input_bic))
     except Exception as e:
-      return render_template('home.html', int_bank_name= 'bank not found', int_bank_bic= 'bic not found')
+      return render_template('home.html', bank_name= 'bank not found', bank_bic= 'bic not found')
 
 @app.route("/International BICS", methods=['GET','POST'])
 def get_html_iban_input():
   if request.method == 'POST':
     try:
       user_input_iban = (request.form['iban']).upper()
-      print(user_input_iban)
       return render_template('home.html', int_bank_name= international_bank_name(user_input_iban), int_bank_bic=internationa_bank_bic(user_input_iban))
     except Exception as e:
       return render_template('home.html', int_bank_name= 'bank not found', int_bank_bic= 'bic not found')
