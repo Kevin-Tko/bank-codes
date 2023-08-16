@@ -19,6 +19,9 @@
     h1, h3 {
       text-align: center;
     }
+    b {
+      color: blue;
+    }
   </style>
 </head>
 <body>
@@ -29,12 +32,12 @@
       
         <div class='row pt-3 pb-3 border-bottom'>
         <div class="col-6">
-          <h4 class=h4>Search SWIFT code</h4>
-            <form method="POST" action = "/BIC">
+          <h4 class=h4>Search Kenyan SWIFT/BIC code</h4>
+            <form method="POST" action = "/Kenyan BICS">
               <div class='row'>
-                <div class='col-8'><input type='text' class="form-control" name="bic" placeholder='Enter bank name'></div>
+                <div class='col-8'><input type='text' class="form-control" name="bic" placeholder='Enter Kenyan bank name'></div>
                 <div class='col-4'><button type="submit" class="btn btn-primary" onclick=get_html_bic_input()>Submit</button></div>
-                <div class='pt-4' style='color:yellow'>
+                <div class='pt-4'>
                   <p>Bank Name: <b>{{bank_name}}</b></p>
                   <p>SWIFT Code: <b>{{bank_bic}}</b></p>
                 </div>
@@ -42,14 +45,14 @@
             </form>
         </div>
         <div class="col-6">
-          <h4 class='h4'>Search IBAN</h4>
-            <form method="POST" action = "/IBAN">
+          <h4 class='h4'>Search Other SWIFT/BIC code</h4>
+            <form method="POST" action = "/International BICS">
               <div class='row'>
-                <div class='col-8'><input type='text' class="form-control" name="iban" placeholder='Enter bank name'></div>
-                <div class='col-4'><button type="submit" class="btn btn-primary">Submit</button></div>
-                 <div class='pt-4' style='color:yellow'>
-                  <p>Bank Name:</p>
-                  <p>IBAN No:</p>
+                <div class='col-8'><input type='text' class="form-control" name="iban" placeholder='Enter other bank name'></div>
+                <div class='col-4'><button  onclick=get_html_iban_input() type="submit" class="btn btn-primary">Submit</button></div>
+                 <div class='pt-4'>
+                  <p>Bank Name: {{int_bank_name}}</p>
+                  <p>IBAN No: {{int_bank_bic}}</p>
                 </div>
               </div>
             </form>
@@ -58,20 +61,14 @@
       
       <div class='row  border-bottom'>
         <div class='col-3'><h5>What is a SWIFT code?</h5></div>
-        <div class='col-9'><p class='lead'>
-          A SWIFT code, or a Bank Identifier Code (BIC), is a unique identification code used to identify banks and financial institutions worldwide. SWIFT stands for the Society for Worldwide Interbank Financial Telecommunication, a cooperative organization that provides a secure network for financial institutions to exchange information and conduct transactions.
-SWIFT codes are composed of either 8 or 11 alphanumeric characters and are used to facilitate international wire transfers. The code consists of four components: the bank code, the country code, the location code, and the branch code (optional). These components help identify the specific bank or branch involved in a transaction.
-When sending money internationally, the sender must provide the recipient's SWIFT code and other necessary details, such as the recipient's account number and name. The SWIFT code ensures the funds are directed to the correct bank and branch, enabling secure and efficient cross-border transactions.
-        </p></div>
+        <div class='col-9'>
+          {%include 'defination.html'%}
+        </div>
       </div>
       <div class='row border-bottom'>
-        <div class='col-3'><h5>What is an IBAN?</h5></div>
-        <div class='col-9'><p class='lead'>
-          An IBAN, short for International Bank Account Number, is a standardized alphanumeric code used to identify bank accounts in international transactions. It was introduced to facilitate the automatic processing of cross-border payments and reduce errors in account number entry.
-The structure of an IBAN may vary depending on the country. Still, it typically consists of a two-letter country code, two check digits, and a series of alphanumeric characters representing the bank and account number. The length of an IBAN can vary, with a maximum of 34 characters.
-The IBAN provides essential information about the recipient's bank and account, including the country where the account is held, the bank's identification code, and the account number. This standardized format helps ensure accurate routing and processing of international payments, reducing the risk of errors and delays.
-When making an international payment, obtaining the recipient's IBAN is important to ensure the funds are directed to the correct account. The IBAN is widely used in Europe and other countries that have adopted the IBAN system. Still, it may only be required for some international transactions, depending on the countries involved.
-        </p>
+        <div class='col-3'><h5>Importance of SWIFT/BIC code?</h5></div>
+        <div class='col-9'>
+          {%include 'importance.html'%}
         </div>
       </div>
       
